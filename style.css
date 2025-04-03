@@ -1,0 +1,23 @@
+
+/* #resume-form{
+    display: none;
+} */
+
+#resume-template{
+    display: none;
+}
+
+.background-property{
+    background-color:rgb(186, 159, 200);
+}
+
+/* .text-type{
+    color:white;
+} */
+
+.shadoEff{
+    border-radius: 160px;
+background: linear-gradient(145deg, #cacaca, #f0f0f0);
+box-shadow:  35px 35px 64px #727272,
+             -35px -35px 64px #ffffff;
+}

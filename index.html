@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Resume Bulder</title>
+</head>
+
+<body>
+
+    <!--resume form-->
+
+    <div class="container" id="resume-form">
+        <h1 class="text-center my-2">Resume Creator</h1>
+
+        <div class="row shadoEff"
+            style="background-color: rgb(175, 200, 214); border-style:solid ; border-radius :0%; ">
+
+            <div class="col-6 mt-3 mb-3">
+                <h3>Professional Information</h3>
+                <!--- Name form-->
+                <div class="form-group">
+                    <label for="nameField">Name: </label>
+                    <input type="text" class="form-control" id="nameField" placeholder="Enter" />
+                </div>
+
+                <!--- contect form-->
+                <div class="form-group mt-2">
+                    <label for="contField">Contact Number: </label>
+                    <input type="text" class="form-control" id="contField" placeholder="Enter" />
+                </div>
+
+                <!--- image form-->
+                <div class="form-group mt-2">
+                    <label for="imgField">Profile Picture </label>
+                    <input type="text" class="form-control" id="imgField" placeholder="Enter Image Address" />
+                </div>
+
+                <!--- email form-->
+                <div class="form-group mt-2">
+                    <label for="emailField">E-Mail Address : </label>
+                    <input type="email" class="form-control" id="emailField" placeholder="Enter" />
+                </div>
+
+                <!--- Address form-->
+                <div class="form-group mt-2">
+                    <label for="addrField">Address: </label>
+                    <textarea class="form-control" id="addrField" placeholder="Enter"></textarea>
+                </div>
+
+                <!-- <div class="form-group mt-2">
+                    <label for="imgField">Profile Image : </label>
+                    <input type="file" multiple accept="image/*" class="form-control" id="imgField" placeholder="Enter" />
+                </div> -->
+
+                <p class="text-secondary; mt-4">Importent Links</p>
+                <div class="form-group mt-2">
+                    <label for="linkdinField">Linkedin: </label>
+                    <input type="url" class="form-control" id="linkdinField" placeholder="Enter" />
+                </div>
+
+                <div class="form-group mt-2">
+                    <label for="githubField">Github: </label>
+                    <input type="url" class="form-control" id="githubField" placeholder="Enter" />
+                </div>
+
+            </div>
+
+            <div class="col-6 mt-3 mb-3">
+                <h3>Professional Information</h3>
+
+                <div class="form-group mt-2">
+                    <label for="">Objective: </label>
+                    <textarea id="objField" class="form-control" placeholder="Enter"></textarea>
+                </div>
+
+                <div class="form-group mt-2" id="we">
+                    <label for="">Experience: </label>
+                    <textarea class="form-control weField" placeholder="Enter"></textarea>
+
+                    <div class="container text-center mt-2" id="weAddButton">
+                        <buttn onclick="addNewWEField()" class="btn btn-primary btn-small">Add More</button>
+                    </div>
+                </div>
+
+                <div class="form-group mt-2" id="edu">
+                    <label for="">Education: </label>
+                    <textarea class="form-control eduField" placeholder="Enter"></textarea>
+
+                    <div class="container text-center mt-2" id="eduAddButton">
+                        <button onclick="addEduField()" class="btn btn-primary btn-small">Add More</button>
+                    </div>
+                </div>
+
+                <div class="form-group mt-2" id="skill">
+                    <label for="">Skill: </label>
+                    <textarea class="form-control skillField" placeholder="Enter"></textarea>
+
+                    <div class="container text-center mt-2" id="skillAddButton">
+                        <button onclick="addSkillField()" class="btn btn-primary btn-small">Add More</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <button onclick="generateResume()" class="btn btn-primary btn-lg mt-3">
+                Generate
+            </button>
+        </div>
+    </div>
+
+
+    <!--resume template-->
+
+    <div class="container" id="resume-template" style="border-style:groove ;">
+        <div class="row">
+            <!--first col-->
+            <div class="col-4 text-center background-property text-type">
+
+                <!--Added Image Place incide div -->
+                <div id="imgTemp"></div>
+
+                <div class="container">
+                    <p id="nameTemp1">Ram Kumar Sharma</p>
+                    <p id="contTemp">+919387537583,+918277444275</p>
+                    <p id="emailTemp">abcd.123@gmail.com</p>
+                    <p id="addrTemp">2/32,sector36,Jaipur,Rajasthan,India</p>
+
+                    <hr>
+                    <p style="color: black;"><a id="linkdinTemp" href="#1" target="_blank">https://in.linkdin.com</a>
+                        Linkdin</p>
+
+                    <p><a id="gitTemp" href="#1" target="_blank">https://www.github.com </a>Github</p>
+
+                </div>
+            </div>
+
+            <!--second col-->
+            <div class="col-8 py-5">
+
+                <h1 id="nameTemp2" class="text-center" style="font-weight: 700;">
+                    Ram Kumar Sharma
+                </h1>
+
+                <div class="card mt-4 ">
+                    <div class="card-header background-property">
+                        <h3>Objective</h3>
+                    </div>
+                    <div class="card-body">
+                        <p id="objTemp">Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit. Voluptate omnis libero
+                            similique, ea nostrum voluptas explicabo
+                            exercitationem odit necessitatibus nemo
+                            laudantium velit perspiciatis illum
+                            laboriosam eaque consequatur quas dolores!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mt-4 ">
+                    <div class="card-header background-property">
+                        <h3>Experience</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="expTemp">
+                            <li>expe1</li>
+                            <li>expe2</li>
+                            <li>expe3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mt-4 ">
+                    <div class="card-header background-property">
+                        <h3>Education</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="eduTemp">
+                            <li>edu1</li>
+                            <li>edu2</li>
+                            <li>edu3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mt-4 ">
+                    <div class="card-header background-property">
+                        <h3>Skill</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul id="skillTemp">
+                            <li>skill1</li>
+                            <li>skill2</li>
+                            <li>skill3</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container mt-3 text-center">
+                    <button onclick="printResume()" class="btn btn-primary btn-small">
+                        Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
