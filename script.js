@@ -1,125 +1,146 @@
-function addNewWEField() {
-    let newNodeExp = document.createElement('textarea');
-    newNodeExp.classList.add('form-control');
-    newNodeExp.classList.add('weField');
-    newNodeExp.setAttribute("placeholder", "Enter more here");
-    newNodeExp.setAttribute("margin-top", "2");
+ // Function to add new Work Experience field
+ function addNewWEField() {
+    const newField = document.createElement('textarea');
+    newField.classList.add('form-control', 'weField', 'mb-2');
+    newField.rows = 2;
+    newField.placeholder = "Company Name, Position, Duration, Responsibilities";
 
-    let weOb = document.getElementById("we");
-    let weAddButtonOb = document.getElementById("weAddButton");
-
-    weOb.insertBefore(newNodeExp, weAddButtonOb);
+    const weContainer = document.querySelector('.we-container');
+    weContainer.appendChild(newField);
 }
 
+// Function to add new Education field
 function addEduField() {
-    let newNodeEdu = document.createElement('textarea');
-    newNodeEdu.classList.add('form-control');
-    newNodeEdu.classList.add('eduField');
-    newNodeEdu.setAttribute("placeholder", "Enter more here");
-    newNodeEdu.setAttribute("margin-top", "2");
+    const newField = document.createElement('textarea');
+    newField.classList.add('form-control', 'eduField', 'mb-2');
+    newField.rows = 2;
+    newField.placeholder = "Degree, Institution, Year, Achievements";
 
-    let eduOb = document.getElementById("edu");
-    let eduAddButtonOb = document.getElementById("eduAddButton");
-
-    eduOb.insertBefore(newNodeEdu, eduAddButtonOb)
+    const eduContainer = document.querySelector('.edu-container');
+    eduContainer.appendChild(newField);
 }
 
+// Function to add new Skill field
 function addSkillField() {
-    let newNodeSkill = document.createElement('textarea');
-    newNodeSkill.classList.add('form-control');
-    newNodeSkill.classList.add('skillField');
-    newNodeSkill.setAttribute("placeholder", "Enter more here");
-    newNodeSkill.setAttribute("margin-top", "2");
+    const newField = document.createElement('textarea');
+    newField.classList.add('form-control', 'skillField', 'mb-2');
+    newField.rows = 2;
+    newField.placeholder = "List your skills separated by commas";
 
-    let skillOb = document.getElementById("skill");
-    let skillAddButtonOb = document.getElementById("skillAddButton");
-
-    skillOb.insertBefore(newNodeSkill, skillAddButtonOb)
+    const skillContainer = document.querySelector('.skill-container');
+    skillContainer.appendChild(newField);
 }
 
-function showImage(){
-    var imgURL = document.getElementById("imgForm").value;
-    var img = document.createElement("img");
-    img.src = imgURL;
-    var div = document.getElementById("imgTemp");
-    div.innerHTML = "";
-    div.appendChild(img);
-}
-
-// generating/
+// Function to generate resume
 function generateResume() {
-    // name genration
-    let nameF = document.getElementById('nameField').value;
+    // Personal Information
+    document.getElementById('nameTemp1').innerHTML = document.getElementById('nameField').value;
+    document.getElementById('nameTemp2').innerHTML = document.getElementById('nameField').value;
+    document.getElementById('contTemp').innerHTML = `<i class="fas fa-phone contact-icon"></i>${document.getElementById('contField').value}`;
 
-    let nameT1 = document.getElementById('nameTemp1');
-    let nameT2 = document.getElementById('nameTemp2');
-
-    nameT1.innerHTML = nameF;
-    nameT2.innerHTML = nameF;
-
-    // contect genration
-    document.getElementById('contTemp').innerHTML = document.getElementById('contField').value;
-    // email genration
-    document.getElementById('emailTemp').innerHTML = document.getElementById('emailField').value;
-    // address genration
-    document.getElementById('addrTemp').innerHTML = document.getElementById('addrField').value;
-    // linkdin generation
-    document.getElementById('linkdinTemp').innerHTML = document.getElementById('linkdinField').value;
-    // github generation
-    document.getElementById('gitTemp').innerHTML = document.getElementById('githubField').value;
-
-    // objective generation
-    document.getElementById('objTemp').innerHTML = document.getElementById('objField').value;
-
-    // experience generation
-    let exps = document.getElementsByClassName('weField');
-
-    let expSrt = "";
-
-    for (var e of exps) {
-        expSrt = expSrt + `<li> ${e.value} </li>`;
+    // Set profile image if provided
+    const imgUrl = document.getElementById('imgField').value;
+    if (imgUrl) {
+        document.getElementById('profileImg').src = imgUrl;
     }
 
-    document.getElementById("expTemp").innerHTML = expSrt;
+    document.getElementById('emailTemp').innerHTML = `<i class="fas fa-envelope contact-icon"></i>${document.getElementById('emailField').value}`;
+    document.getElementById('addrTemp').innerHTML = `<i class="fas fa-map-marker-alt contact-icon"></i>${document.getElementById('addrField').value}`;
 
-    // education generation
-    let edus = document.getElementsByClassName("eduField");
+    // Links
+    const linkedinUrl = document.getElementById('linkdinField').value;
+    const githubUrl = document.getElementById('githubField').value;
 
-    let eduStr = "";
+    document.getElementById('linkdinTemp').href = linkedinUrl;
+    document.getElementById('linkdinTemp').innerHTML = `<i class="fab fa-linkedin contact-icon"></i>${linkedinUrl ? 'LinkedIn Profile' : 'Not provided'}`;
 
-    for (var e of edus) {
-        eduStr = eduStr + `<li>${e.value}</li>`;
+    document.getElementById('gitTemp').href = githubUrl;
+    document.getElementById('gitTemp').innerHTML = `<i class="fab fa-github contact-icon"></i>${githubUrl ? 'GitHub Profile' : 'Not provided'}`;
+
+    // Professional Information
+    document.getElementById('objTemp').innerHTML = document.getElementById('objField').value || "Not specified";
+
+    // Work Experience
+    const weFields = document.getElementsByClassName('weField');
+    let weHTML = '';
+    for (let i = 0; i < weFields.length; i++) {
+        if (weFields[i].value) {
+            weHTML += `<li>${weFields[i].value}</li>`;
+        }
     }
+    document.getElementById('expTemp').innerHTML = weHTML || "<li>No work experience provided</li>";
 
-    document.getElementById('eduTemp').innerHTML = eduStr;
-    // education generation
-    let skills = document.getElementsByClassName("skillField");
-
-    let skillStr = "";
-
-    for (var e of skills) {
-        skillStr = skillStr + `<li>${e.value}</li>`;
+    // Education
+    const eduFields = document.getElementsByClassName('eduField');
+    let eduHTML = '';
+    for (let i = 0; i < eduFields.length; i++) {
+        if (eduFields[i].value) {
+            eduHTML += `<li>${eduFields[i].value}</li>`;
+        }
     }
+    document.getElementById('eduTemp').innerHTML = eduHTML || "<li>No education information provided</li>";
 
-    document.getElementById('skillTemp').innerHTML = skillStr;
+    // Skills
+    const skillFields = document.getElementsByClassName('skillField');
+    let skillHTML = '';
+    for (let i = 0; i < skillFields.length; i++) {
+        if (skillFields[i].value) {
+            // Split skills by comma and create list items
+            const skills = skillFields[i].value.split(',').map(skill => skill.trim());
+            skills.forEach(skill => {
+                if (skill) {
+                    skillHTML += `<li>${skill}</li>`;
+                }
+            });
+        }
+    }
+    document.getElementById('skillTemp').innerHTML = skillHTML || "<li>No skills provided</li>";
 
+    // Show the resume template
+    document.getElementById('resume-template').style.display = 'block';
     document.getElementById('resume-form').style.display = 'none';
 
-    document.getElementById('resume-template').style.display = 'block';
-
-// add image
-    var imgURL = document.getElementById("imgField").value;
-    var img = document.createElement("img");
-    img.src = imgURL;
-    var div = document.getElementById("imgTemp");
-    div.innerHTML = "";
-    div.appendChild(img);
-    img.classList.add('img-fluid');
-    img.classList.add('mt-2');
-
+    // Scroll to the resume
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
-
+// Function to print resume
 function printResume() {
     window.print();
 }
+
+// Function to go back to form
+function backToForm() {
+    document.getElementById('resume-template').style.display = 'none';
+    document.getElementById('resume-form').style.display = 'block';
+
+    // Scroll to the form
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Initialize with one empty field for each section
+window.onload = function () {
+    // Create containers for dynamic fields
+    const weContainer = document.createElement('div');
+    weContainer.classList.add('we-container');
+    document.getElementById('we').insertBefore(weContainer, document.getElementById('weAddButton'));
+
+    const eduContainer = document.createElement('div');
+    eduContainer.classList.add('edu-container');
+    document.getElementById('edu').insertBefore(eduContainer, document.getElementById('eduAddButton'));
+
+    const skillContainer = document.createElement('div');
+    skillContainer.classList.add('skill-container');
+    document.getElementById('skill').insertBefore(skillContainer, document.getElementById('skillAddButton'));
+
+    // Add initial fields
+    addNewWEField();
+    addEduField();
+    addSkillField();
+};

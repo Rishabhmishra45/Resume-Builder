@@ -1,23 +1,190 @@
-
-/* #resume-form{
-    display: none;
-} */
-
-#resume-template{
-    display: none;
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --accent-color: #e74c3c;
 }
 
-.background-property{
-    background-color:rgb(186, 159, 200);
+body {
+    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* .text-type{
-    color:white;
-} */
+.shadoEff {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    border: none !important;
+    background-color: white;
+}
 
-.shadoEff{
-    border-radius: 160px;
-background: linear-gradient(145deg, #cacaca, #f0f0f0);
-box-shadow:  35px 35px 64px #727272,
-             -35px -35px 64px #ffffff;
+#resume-form h1 {
+    color: var(--dark-color);
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#resume-form h3 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* Resume Template Styles */
+#resume-template {
+    display: none;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none !important;
+}
+
+.background-property {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.text-type {
+    padding: 30px 15px;
+    height: 100%;
+}
+
+#imgTemp {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#imgTemp img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#nameTemp1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+#nameTemp2 {
+    color: var(--dark-color);
+    margin-top: 20px;
+}
+
+#contTemp,
+#emailTemp,
+#addrTemp {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: 700;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .col-4,
+    .col-6,
+    .col-8 {
+        width: 100%;
+    }
+
+    #resume-template .row {
+        flex-direction: column;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Icon styling */
+.contact-icon {
+    margin-right: 8px;
+    color: var(--light-color);
+}
+
+/* Add more spacing between form elements */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Style for the print button */
+#print-btn {
+    margin-bottom: 30px;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+#print-btn:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
